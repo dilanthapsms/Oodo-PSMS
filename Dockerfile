@@ -24,7 +24,7 @@ COPY requirements.txt /opt/odoo/requirements.txt
 RUN apt-get update && apt-get install -y --no-install-recommends \
         build-essential libpq-dev libldap2-dev libsasl2-dev libxml2-dev libxslt1-dev \
         libjpeg-dev zlib1g-dev libffi-dev \
-    && pip install -r /opt/odoo/requirements.txt \
+    && pip install -r /opt/odoo/requirements.txt rl-renderPM \
     && apt-get purge -y --auto-remove build-essential libpq-dev libldap2-dev libsasl2-dev \
         libxml2-dev libxslt1-dev libjpeg-dev zlib1g-dev libffi-dev \
     && rm -rf /var/lib/apt/lists/*
