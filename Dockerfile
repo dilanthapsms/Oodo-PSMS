@@ -31,6 +31,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN useradd --create-home --home-dir /var/lib/odoo --shell /bin/bash odoo
 
+# Free community accounting apps by Odoo Mates (LGPL-3), branch 20.0, pinned commit
+ARG ODOOMATES_REF=0cb8d6123115aab8b9fdb10b27d4176dd6c3a3db
+RUN mkdir -p /mnt/extra-addons \
+    && curl -fsSL https://github.com/odoomates/odooapps/archive/${ODOOMATES_REF}.tar.gz \
+       | tar -xz -C /mnt/extra-addons --strip-components=1 \
+    && rm -f /mnt/extra-addons/*.md \
+    && pip install pypdf
+
 WORKDIR /opt/odoo
 COPY . /opt/odoo
 COPY docker-entrypoint.sh /entrypoint.sh
