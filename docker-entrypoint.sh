@@ -6,6 +6,9 @@ cat > /etc/odoo/odoo.conf <<CONF
 [options]
 addons_path = /opt/odoo/addons,/mnt/extra-addons
 data_dir = /var/lib/odoo
+http_interface = 0.0.0.0
+http_port = 8069
+gevent_port = 8072
 admin_passwd = ${ADMIN_PASSWD:-admin}
 db_host = ${DB_HOST:-db}
 db_port = ${DB_PORT:-5432}
