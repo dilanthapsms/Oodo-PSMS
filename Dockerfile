@@ -39,6 +39,11 @@ RUN mkdir -p /mnt/extra-addons \
     && rm -f /mnt/extra-addons/*.md \
     && pip install pypdf
 
+# Free MuK Backend Theme (LGPL-3) - app grid home screen; only muk_web_* modules, pinned commit
+ARG MUK_REF=12dea039322ca33ca4f614d351f4bbfb7c9f5fd1
+RUN curl -fsSL https://github.com/muk-it/odoo-modules/archive/${MUK_REF}.tar.gz \
+       | tar -xz -C /mnt/extra-addons --strip-components=1 --wildcards "odoo-modules-${MUK_REF}/muk_web_*"
+
 WORKDIR /opt/odoo
 COPY . /opt/odoo
 COPY docker-entrypoint.sh /entrypoint.sh
