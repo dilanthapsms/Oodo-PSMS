@@ -1,3 +1,5 @@
+# Used by Dokploy. The Odoo image is built by GitHub Actions
+# (.github/workflows/docker-publish.yml) so the droplet never has to build it.
 services:
   db:
     image: postgres:16
@@ -15,9 +17,8 @@ services:
       retries: 10
 
   odoo:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: ghcr.io/dilanthapsms/oodo-psms:latest
+    pull_policy: always
     restart: unless-stopped
     depends_on:
       db:
