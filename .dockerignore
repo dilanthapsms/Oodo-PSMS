@@ -1,0 +1,10 @@
+.git
+.github
+doc
+debian
+setup/win32
+setup/rpm
+setup/iot_box_builder
+skills
+**/__pycache__
+**/*.pyc
